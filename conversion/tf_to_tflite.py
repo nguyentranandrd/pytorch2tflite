@@ -1,12 +1,8 @@
 import tensorflow as tf
 
-saved_model_dir = 'model_tf'
-tflite_model_path = 'model.tflite'
-
-# Convert the model
-converter = tf.lite.TFLiteConverter.from_saved_model(saved_model_dir)
+converter = tf.lite.TFLiteConverter.from_saved_model(
+    "/content/drive/My Drive/ssd_mobilenet_v2_fpnlite_320x320_coco17_tpu-8/saved_model")
 tflite_model = converter.convert()
 
-# Save the model
-with open(tflite_model_path, 'wb') as f:
+with open('model_tf.tflite', 'wb') as f:
     f.write(tflite_model)
